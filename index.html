@@ -1,5 +1,7 @@
 <html>
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -9,7 +11,7 @@
         <div class="weather-now">날씨 개요</div>
       </div>
       <div class="temperature">
-        <div class="temperature-now">현재 기온</div>
+        <div class="temperature-now" id="temp">현재 기온</div>
         <div class="temperature-sub">
           <div class="temperature-sub-high">최고 기온</div>
           <div class="temperature-sub-low">최저 기온</div>
@@ -21,4 +23,32 @@
     <div class="bottom"></div>
     <div class="footer"></div>
   </body>
+  <script>
+    const weather_api_url =
+      "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4977c6395d6461c4d67ac01827948fe7";
+    /*const weather_api_url =
+      "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4977c6395d6461c4d67ac01827948fe7";
+    async function getWeather() {
+      const response = await fetch(weather_api_url);
+      const data = await response.json();
+      var temp = data.main.temp;
+      console.log(temp);
+      return temp;
+    }
+    var temp = getWeather();
+    
+    // document.getElementById("temp").innerHTML = temp;*/
+    axios
+      .get(weather_api_url)
+      .then(function (result) {
+        console.log("통신결과 :", result);
+        temp = result.data.main.temp - 273.15;
+
+        console.log(temp.toFixed(2));
+        document.getElementById("temp").innerHTML = temp.toFixed(2);
+      })
+      .catch(function (error) {
+        console.error("error 발생 :", error);
+      });
+  </script>
 </html>
