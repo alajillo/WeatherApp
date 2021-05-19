@@ -58,12 +58,15 @@ body {
 }
 
 .weather-now {
+  display: flex;
+  justify-content: center;
   font-size: 30px;
   width: 70%;
   height: 40%;
 }
 .temperature-now {
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 90px;
   height: 70%;
