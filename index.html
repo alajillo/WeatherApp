@@ -1,7 +1,7 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    ;
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -26,18 +26,7 @@
   <script>
     const weather_api_url =
       "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4977c6395d6461c4d67ac01827948fe7";
-    /*const weather_api_url =
-      "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4977c6395d6461c4d67ac01827948fe7";
-    async function getWeather() {
-      const response = await fetch(weather_api_url);
-      const data = await response.json();
-      var temp = data.main.temp;
-      console.log(temp);
-      return temp;
-    }
-    var temp = getWeather();
-    
-    // document.getElementById("temp").innerHTML = temp;*/
+
     axios
       .get(weather_api_url)
       .then(function (result) {
