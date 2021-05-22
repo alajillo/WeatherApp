@@ -7,14 +7,26 @@
   <body>
     <div class="top">
       <div class="top-box_1">
-        <div class="location">서울</div>
-        <div class="weather-now">날씨 개요</div>
+        <select
+          class="locations"
+          name="location"
+          id="location"
+          onchange="getWeather()"
+        >
+          <option value="null">도시</option>
+          <option value="seoul">서울</option>
+          <option value="busan">부산</option>
+          <option value="Gangwon-do">강원도</option>
+          <option value="incheon">인천</option>
+          <option value="Jeju-do">제주도</option>
+        </select>
+        <div id="weather-now">날씨 개요</div>
       </div>
       <div class="temperature">
         <div class="temperature-now" id="temp">현재 기온</div>
         <div class="temperature-sub">
-          <div class="temperature-sub-high">최고 기온</div>
-          <div class="temperature-sub-low">최저 기온</div>
+          <div id="temperature-sub-high">최고 기온</div>
+          <div id="temperature-sub-low">최저 기온</div>
         </div>
       </div>
     </div>
@@ -24,20 +36,32 @@
     <div class="footer"></div>
   </body>
   <script>
-    const weather_api_url =
-      "https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4977c6395d6461c4d67ac01827948fe7";
+    function getWeather() {
+      var city = document.getElementById("location").value;
+      const weather_api_url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4977c6395d6461c4d67ac01827948fe7&lang=kr`;
 
-    axios
-      .get(weather_api_url)
-      .then(function (result) {
-        console.log("통신결과 :", result);
-        temp = result.data.main.temp - 273.15;
+      axios
+        .get(weather_api_url)
+        .then(function (result) {
+          console.log("통신결과 :", result);
+          temp = result.data.main.temp - 273.15;
+          weather = result.data.weather[0].description;
+          tempLow = result.data.main.temp_min - 273.15;
+          tempHigh = result.data.main.temp_max - 273.15;
 
-        console.log(temp.toFixed(2));
-        document.getElementById("temp").innerHTML = temp.toFixed(2);
-      })
-      .catch(function (error) {
-        console.error("error 발생 :", error);
-      });
+          console.log(temp.toFixed(2));
+          document.getElementById("temp").innerHTML = temp.toFixed(2);
+          document.getElementById("weather-now").innerHTML = weather;
+          document.getElementById(
+            "temperature-sub-high"
+          ).innerHTML = `최고기온 \n ${tempLow.toFixed(2)}`;
+          document.getElementById(
+            "temperature-sub-low"
+          ).innerHTML = `최고기온 \n ${tempHigh.toFixed(2)}`;
+        })
+        .catch(function (error) {
+          console.error("error 발생 :", error);
+        });
+    }
   </script>
 </html>
