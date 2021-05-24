@@ -32,7 +32,7 @@ function getWeather() {
       tempLow = result.data.main.temp_min - 273.15;
       tempHigh = result.data.main.temp_max - 273.15;
 
-      document.getElementById("temp").innerHTML = temp.toFixed(2);
+      document.getElementById("temp").innerHTML = `${temp.toFixed(2)}도`;
       document.getElementById("weather-now").innerHTML = weather;
       document.getElementById(
         "temperature-sub-high"
@@ -82,10 +82,30 @@ function getForecast() {
       let fore_card = "";
       console.log(fore_temp);
       console.log(fore_weather);
+      var timeNowTime = Date().substr(16, 2);
+      var timeNowMinute = Date().substr(19.2);
+      var minute_display = timeNowMinute.substr(0, 2);
+      parseInt(timeNowTime);
       for (let i = 0; i < 24; i++) {
+        if (timeNowTime === 23) {
+          timeNowTime = 0;
+        } else {
+          timeNowTime++;
+        }
+        let weather_icon = fore_weather[i];
+        switch (weather_icon) {
+          case "Rain":
+            imgUrl = "img/cloud-rain-solid.svg";
+            break;
+          case "Clear":
+            imgUrl = "img/sun-solid.svg";
+            break;
+          default:
+            imgUrl = "img/cloud-solid.svg";
+        }
         fore_card += `<div class="hourly-forecast">
-      <p>${i}시간후</p>
-      <div></div>
+      <p>${timeNowTime}시 ${minute_display}분</p>
+      <img src=${imgUrl} alt="weather icon">
       <div>${fore_temp[i]}도</div>
     </div>`;
       }
