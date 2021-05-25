@@ -8,9 +8,7 @@ body {
 }
 
 body {
-  background-image: url("img/andre-iv-G8O659TQQk0-unsplash.jpg");
-  background-size: 150%;
-  background-repeat: no-repeat;
+  background-color: (240);
   z-index: -2;
 }
 #cityName {
@@ -22,7 +20,7 @@ body {
   height: 40%;
 }
 .top {
-  height: 50vh;
+  height: 40vh;
 
   display: flex;
   flex-direction: column;
@@ -50,7 +48,7 @@ body {
   overflow-y: hidden;
   display: flex;
   align-items: center;
-  height: 30vh;
+  height: 35vh;
 }
 
 .bottom {
@@ -60,11 +58,13 @@ body {
   align-items: center;
 }
 .bottom > button {
-  width: 10vh;
-  height: 10vh;
+  font-size: 30px;
+  width: 100px;
+  height: 100px;
   border-radius: 18px;
   opacity: 70%;
   border: none;
+  z-index: 1;
 }
 
 .footer {
