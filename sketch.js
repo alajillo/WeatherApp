@@ -12,7 +12,7 @@ function setup() {
 function draw() {
   background(240);
 
-  for (let i = 0; i < random(10); i++) {
+  for (let i = 0; i < random(20); i++) {
     raindrops.push(new Raindrop());
   }
   for (let rain of raindrops) {
@@ -24,10 +24,10 @@ function draw() {
 function Raindrop() {
   this.posX = random(width);
   this.posY = random(-20, 0);
-  this.size = random(10, 30);
+  this.size = random(30, 50);
 
   this.update = function () {
-    this.posY += pow(this.size, 0.75) * 2;
+    this.posY += pow(this.size, 0.75) * 4;
   };
 
   if (this.posY > height) {

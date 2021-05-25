@@ -57,7 +57,7 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-.bottom > button {
+.bottom > a {
   font-size: 30px;
   width: 100px;
   height: 100px;
