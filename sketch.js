@@ -2,7 +2,7 @@ let raindrops = [];
 let canvas;
 
 function setup() {
-  pixelDencity(1);
+  pixelDensity();
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style("z-index", "-1");
@@ -24,7 +24,7 @@ function draw() {
 
 function Raindrop() {
   this.posX = random(width);
-  this.posY = random(-20, 0);
+  this.posY = 0;
   this.size = random(20, 50);
 
   this.update = function () {
