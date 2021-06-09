@@ -1,6 +1,13 @@
 * {
   text-align: center;
 }
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body {
   width: 100%;
@@ -8,7 +15,7 @@ body {
 }
 
 body {
-  background-color: beige;
+  /* background-color: beige; */
 }
 #cityName {
   margin-bottom: 10px;
