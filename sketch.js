@@ -28,13 +28,13 @@ function Raindrop() {
   this.size = random(20, 50);
 
   this.update = function () {
-    this.posY += pow(this.size, 0.75) * 2;
-  };
-
-  if (this.posY > height) {
+     if (this.posY > height) {
     let index = raindrops.indexOf(this);
     raindrops.splice(index, 1);
   }
+    this.posY += pow(this.size, 0.75) * 2;
+  };
+
 
   this.display = function () {
     rect(this.posX, this.posY, 1, this.size);
